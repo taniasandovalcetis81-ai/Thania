@@ -1,0 +1,117 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Juegos Poki- mi página</title>
+<style>
+    body {
+        font-family: Tahoma, sans-serif;
+        background: url('Poki_logo.png') no-repeat center center fixed;
+        background-size: auto 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    header {
+        background-color: #5ed7ff93;
+        color: rgb(251, 249, 253);
+        padding: 20px;
+        font-size: 24px;
+    }
+
+    .juegos {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .juego {
+        background-color: rgb(105, 245, 105);
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        width: 250px;
+        padding: 15px;
+    }
+
+
+    .juego button {
+        background-color: #0058cc;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .juego button:hover {
+        background-color: #0011aa;
+    }
+
+    iframe {
+        width: 1378px;       
+        height: 778px;         
+        margin: 20px auto;
+        display: none;
+        border: 3px solid #10006b;
+        border-radius: 15px;
+        transition: opacity 0.3s ease-in-out;
+        max-width: 100%;      
+        box-sizing: border-box;
+    }
+
+    iframe.visible {
+        display: block;
+        opacity: 1;
+    }
+    
+</style>
+</head>
+<body>
+<header>Portal: Mini Juegos</header>
+
+<div class="juegos">
+    <div class="juego">
+        <img src="Cupcakes.jpeg" alt="Juego 1" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 2px 12px #d6bfa7;">
+        <h3>Juego_Cupcakes!</h3>
+        <button onclick="abrirJuego('misjuegos/Cupcakes/index.html')">Jugar</button>
+    </div>
+
+    <div class="juego">
+        <img src="Rob_robot.jpeg" alt="Juego 2" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 2px 12px #d6bfa7;">
+        <h3>Juego_Rob el Robot!</h3>
+        <button onclick="abrirJuego('misjuegos/ROD/index.html')">Jugar</button>
+    </div>
+
+    
+</div>
+
+<button id="cerrarBtn" style="display:none; padding:10px 20px; font-size:16px; border:none; background-color:#cc0000; color:white; border-radius:10px; cursor:pointer; margin-top:10px;">Cerrar Juego</button>
+<iframe id="visor"></iframe>
+
+
+<script>
+function abrirJuego(url) {
+const visor = document.getElementById('visor');
+const cerrarBtn = document.getElementById('cerrarBtn');
+visor.src = url;
+visor.classList.add('visible');
+cerrarBtn.style.display = 'inline-block';
+window.scrollTo({ top: visor.offsetTop - 20, behavior: 'smooth' });
+}
+
+
+document.getElementById('cerrarBtn').addEventListener('click', function() {
+const visor = document.getElementById('visor');
+visor.src = '';
+visor.classList.remove('visible');
+this.style.display = 'none';
+});
+</script>
+</body>
+</html>
